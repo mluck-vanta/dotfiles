@@ -1,0 +1,12 @@
+cursor --install-extension ms-python.python \
+     --install-extension ms-python.black-formatter \
+     --install-extension dbaeumer.vscode-eslint \
+     --install-extension esbenp.prettier-vscode \
+     --install-extension eamodio.gitlens \
+     --install-extension graphql.vscode-graphql \
+     --install-extension hashicorp.terraform \
+     --install-extension redhat.vscode-yaml \
+     --install-extension github.vscode-github-actions \
+     --install-extension yoavbls.pretty-ts-errors \
+     --install-extension apollographql.vscode-apollo \
+     --install-extension firsttris.vscode-jest-runner
