@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(ls /workspaces/obsidian*)",
+      "Bash(cat /workspaces/obsidian*)",
+      "Bash(head /workspaces/obsidian*)",
+      "Bash(tail /workspaces/obsidian*)",
+      "Bash(grep /workspaces/obsidian*)",
+      "Bash(find /workspaces/obsidian*)",
+      "mcp__ide__getDiagnostics",
+      "mcp__glean_default__search",
+      "mcp__glean_default__read_document",
+      "mcp__glean_default__chat"
+    ],
+    "deny": [
+      "Bash(git add:*)",
+      "Bash(git commit*)",
+      "Bash(git push*)",
+      "Bash(git reset*)",
+      "Bash(git switch*)",
+      "Bash(git checkout*)",
+      "Bash(git merge*)",
+      "Bash(git rebase*)",
+      "Bash(git cherry-pick*)",
+      "Bash(git stash*)",
+      "Bash(git clean*)",
+      "Bash(git revert*)",
+      "Bash(git branch -d*)",
+      "Bash(git branch -D*)"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true,
+    "code-simplifier@claude-plugins-official": true
+  }
+}
