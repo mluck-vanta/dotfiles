@@ -210,11 +210,13 @@ setup_auth() {
         echo "$GITHUB_TOKEN" | gh auth login --with-token \
             && success "gh: authenticated via GITHUB_TOKEN" \
             || warn "gh: auth failed — run 'gh auth login' manually"
-    else
+    elif [ -t 0 ]; then
         info "gh: starting device flow (follow the prompts)..."
         gh auth login --hostname github.com \
             && success "gh: authenticated" \
             || warn "gh: auth failed — run 'gh auth login' manually"
+    else
+        warn "gh: not authenticated — run 'gh auth login' in an interactive terminal"
     fi
 
     # gsync
@@ -224,7 +226,7 @@ setup_auth() {
     fi
     if gsync auth status >/dev/null 2>&1; then
         skip "gsync already authenticated"
-    elif [ -f "/usr/local/secrets/gsync_google_oauth" ]; then
+    elif [ -f "/usr/local/secrets/gsync_google_oauth" ] && [ -t 0 ]; then
         info "gsync: running auth login (browser will open)..."
         gsync auth login \
             && success "gsync: authenticated" \
