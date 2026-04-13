@@ -28,8 +28,9 @@ install_claude_code() {
 setup_symlinks() {
     info "Setting up symlinks..."
 
-    ln -sf "$CLAUDE_DIR/CLAUDE.md" "$HOME/CLAUDE.md"
-    success "~/CLAUDE.md"
+    mkdir -p "$HOME/.claude"
+    ln -sf "$CLAUDE_DIR/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+    success "~/.claude/CLAUDE.md"
 
     mkdir -p "$HOME/.config/git"
     ln -sf "$CLAUDE_DIR/gitignore" "$HOME/.config/git/ignore"
