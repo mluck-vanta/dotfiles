@@ -25,4 +25,4 @@ git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-${ZSH:-
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-npx -y @gleanwork/configure-mcp-server remote --url https://vanta-be.glean.com/mcp/default --client cursor
+bash "$(dirname "$(readlink -f "$0")")/ai-setup.sh"

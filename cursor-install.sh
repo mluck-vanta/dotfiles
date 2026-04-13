@@ -9,4 +9,7 @@ cursor --install-extension ms-python.python \
      --install-extension github.vscode-github-actions \
      --install-extension yoavbls.pretty-ts-errors \
      --install-extension apollographql.vscode-apollo \
-     --install-extension firsttris.vscode-jest-runner
+     --install-extension firsttris.vscode-jest-runner \
+     --install-extension anthropic.claude-vscode \
+     --install-extension openai.codex \
+     --install-extension snowflake.snowflake-vsc
