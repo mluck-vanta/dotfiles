@@ -148,6 +148,36 @@ setup_mcp_servers() {
     fi
 
     setup_cursor_mcp
+    setup_obsidian_mcp
+}
+
+setup_obsidian_mcp() {
+    local mcp_file="/workspaces/obsidian/.mcp.json"
+    if [ ! -f "$mcp_file" ]; then
+        warn "/workspaces/obsidian/.mcp.json not found — skipping"
+        return
+    fi
+    python3 -c "
+import json, sys
+with open('$mcp_file') as f:
+    cfg = json.load(f)
+servers = cfg.setdefault('mcpServers', {})
+changed = False
+if 'glean_default' not in servers:
+    servers['glean_default'] = {'type': 'http', 'url': 'https://vanta-be.glean.com/mcp/default'}
+    changed = True
+if 'vanta' not in servers:
+    servers['vanta'] = {'type': 'http', 'url': 'https://mcp.vanta.com/mcp'}
+    changed = True
+if changed:
+    with open('$mcp_file', 'w') as f:
+        json.dump(cfg, f, indent=2)
+        f.write('\n')
+    print('merged')
+else:
+    print('already present')
+" 2>/dev/null && success "obsidian .mcp.json: glean_default + vanta" \
+              || warn "failed to merge into obsidian .mcp.json"
 }
 
 setup_cursor_mcp() {

@@ -20,6 +20,10 @@ create_symlinks() {
 
 create_symlinks
 
+mkdir -p ~/.snowflake
+ln -sf $script_dir/snowflake/connections.toml ~/.snowflake/connections.toml
+echo "Creating symlink to connections.toml in ~/.snowflake."
+
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search

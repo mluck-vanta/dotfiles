@@ -19,8 +19,10 @@ bash cursor-install.sh
 
 1. Sets default shell to zsh
 2. Symlinks dotfiles (`.zshrc`, `.gitconfig`) to `~/`
-3. Installs zsh plugins (autosuggestions, completions, history-substring-search, syntax-highlighting)
-4. Runs `ai-setup.sh` (see below)
+3. Symlinks `~/.snowflake/connections.toml` for the Snowflake Cursor extension
+4. Installs zsh plugins (autosuggestions, completions, history-substring-search, syntax-highlighting)
+
+After your CDE starts, run `bash ~/dotfiles/ai-setup.sh` to set up AI tooling.
 
 ## What `ai-setup.sh` Does
 
@@ -64,6 +66,7 @@ The script symlinks `/workspaces/obsidian/.claude/settings.local.json` to `~/.cl
 | `claude/gitignore` | Global gitignore — excludes `.ai-dev/` and `.claude/settings.local.json` |
 | `claude/obsidian-settings-local.json` | Per-project settings seed for obsidian monorepo |
 | `claude/commands/` | Custom slash commands (copied to `~/.claude/commands/`) |
+| `snowflake/connections.toml` | Snowflake connection config (symlinked to `~/.snowflake/connections.toml`) |
 
 ## Common Tasks
 
