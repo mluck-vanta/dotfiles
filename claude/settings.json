@@ -15,22 +15,7 @@
       "mcp__glean_default__read_document",
       "mcp__glean_default__chat"
     ],
-    "deny": [
-      "Bash(git add:*)",
-      "Bash(git commit*)",
-      "Bash(git push*)",
-      "Bash(git reset*)",
-      "Bash(git switch*)",
-      "Bash(git checkout*)",
-      "Bash(git merge*)",
-      "Bash(git rebase*)",
-      "Bash(git cherry-pick*)",
-      "Bash(git stash*)",
-      "Bash(git clean*)",
-      "Bash(git revert*)",
-      "Bash(git branch -d*)",
-      "Bash(git branch -D*)"
-    ]
+    "deny": []
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
