@@ -1,0 +1,7 @@
+[default]
+account = "JYFRXUC-VANTA"
+authenticator = "externalbrowser"
+role = "EPDVIEWER"
+warehouse = "DEV"
+database = "VANTA"
+schema = "VANTA_APP"
