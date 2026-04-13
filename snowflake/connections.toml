@@ -1,8 +1,0 @@
-[default]
-account = "JYFRXUC-VANTA_ENG_STAGING"
-user = ""
-authenticator = "externalbrowser"
-warehouse = "DEV_WAREHOUSE_XSMALL"
-database = "VANTA_APP"
-schema = "TRANSFORMED_DATA"
-role = "APP-SNOWFLAKE-ENG-STAGING-READ-ONLY"
