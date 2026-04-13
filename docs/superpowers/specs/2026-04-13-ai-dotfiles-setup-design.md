@@ -36,6 +36,11 @@ A dedicated script for all AI tooling setup. Called by `install.sh` at the end. 
 
 ### Execution order
 
+**0. Install Claude Code CLI**
+- Check if `claude` is already on `$PATH`; skip if present
+- Install via: `curl -fsSL https://claude.ai/install.sh | sh`
+- This ensures `ai-setup.sh` is safe to run on a completely fresh CDE before Claude Code has been installed
+
 **1. Symlinks**
 - `~/CLAUDE.md` → `dotfiles/claude/CLAUDE.md`
 - `~/.config/git/ignore` → `dotfiles/claude/gitignore`
@@ -64,6 +69,7 @@ Each configured with `claude mcp add --scope user ... || true` (safe to re-run).
 | Datadog | Off | Skip unless `$DATADOG_API_KEY` present. `/toggle-datadog-mcp` is an existing command in `/workspaces/obsidian/.claude/commands/` — not created by this setup. |
 | MongoDB | Off | Skip unconditionally. `/toggle-mongo-mcp` is an existing command in `/workspaces/obsidian/.claude/commands/` — not created by this setup. |
 | LangSmith | Off | Skip unless `$LANGSMITH_API_KEY` present; `claude mcp add --transport stdio --scope user LangSmith --env LANGSMITH_API_KEY="$LANGSMITH_API_KEY" -- uvx langsmith-mcp-server` |
+| Snowflake | Off | Skip unless `$SNOWFLAKE_ACCOUNT`, `$SNOWFLAKE_USER`, and `$SNOWFLAKE_PASSWORD` (or `$SNOWFLAKE_PRIVATE_KEY_PATH`) Ona secrets are present; `claude mcp add --transport stdio --scope user snowflake -- npx -y @modelcontextprotocol/server-snowflake` with credentials passed via env |
 
 Also: sync Glean + Atlassian MCP entries to `~/.cursor/mcp.json` (replaces the existing line in `install.sh`).
 
@@ -186,11 +192,28 @@ Per-project settings for the Obsidian monorepo. Starts as an empty permissions o
 
 ---
 
+## Cursor plugin installation
+
+`cursor-install.sh` is extended with three additional extensions:
+
+| Extension | ID | Purpose |
+|-----------|-----|---------|
+| Claude Code | `anthropic.claude-vscode` | Claude Code integration inside Cursor |
+| Codex | `openai.codex` | OpenAI Codex assistant inside Cursor |
+| Snowflake | `snowflake.snowflake-vsc` | Snowflake SQL development and schema browsing |
+
+These are appended to the existing `cursor --install-extension` block. The script is called from `install.sh` already; no change to the call site is needed.
+
+---
+
 ## Changes to existing files
 
 ### `install.sh`
 - Add `bash "$SCRIPT_DIR/ai-setup.sh"` at the end
 - Remove the `npx -y @gleanwork/configure-mcp-server ... --client cursor` line (consolidated into `ai-setup.sh`)
+
+### `cursor-install.sh`
+- Add `anthropic.claude-vscode`, `openai.codex`, `snowflake.snowflake-vsc` to the extension list
 
 ### `.gitconfig`
 - Add `[core] excludesFile = ~/.config/git/ignore` (the symlinked gitignore)
