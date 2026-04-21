@@ -77,6 +77,19 @@ setup_commands() {
 }
 
 # ---------------------------------------------------------------------------
+# 3b. Skills
+# ---------------------------------------------------------------------------
+setup_skills() {
+    mkdir -p "$HOME/.claude/skills"
+    if [ -n "$(find "$CLAUDE_DIR/skills" -not -name '.gitkeep' -type f 2>/dev/null)" ]; then
+        cp -r "$CLAUDE_DIR/skills/." "$HOME/.claude/skills/"
+        success "skills → ~/.claude/skills/"
+    else
+        skip "no custom skills yet"
+    fi
+}
+
+# ---------------------------------------------------------------------------
 # 4. MCP servers
 # ---------------------------------------------------------------------------
 setup_mcp_servers() {
@@ -252,6 +265,7 @@ main() {
     setup_symlinks
     setup_claude_settings
     setup_commands
+    setup_skills
     setup_mcp_servers
     setup_plugins
     setup_gsync_plugin
