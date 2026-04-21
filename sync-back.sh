@@ -31,8 +31,12 @@ else
 fi
 
 # 2. commands/
-rsync -a --delete --exclude='.gitkeep' "$HOME/.claude/commands/" "$CLAUDE_DIR/commands/"
-success "commands/"
+if [ -d "$HOME/.claude/commands" ]; then
+    rsync -a --delete --exclude='.gitkeep' "$HOME/.claude/commands/" "$CLAUDE_DIR/commands/"
+    success "commands/"
+else
+    skip "~/.claude/commands/ not found — no commands to sync"
+fi
 
 # 3. skills/
 if [ -d "$HOME/.claude/skills" ]; then
