@@ -15,10 +15,21 @@
       "mcp__glean_default__read_document",
       "mcp__glean_default__chat"
     ],
-    "deny": []
+    "deny": [],
+    "defaultMode": "auto"
   },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true,
     "code-simplifier@claude-plugins-official": true
-  }
+  },
+  "extraKnownMarketplaces": {
+    "gsync-local": {
+      "source": {
+        "source": "directory",
+        "path": "/workspaces/obsidian/scripts/gsync/claude-plugin"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipAutoPermissionPrompt": true
 }
